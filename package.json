@@ -63,6 +63,6 @@
         "trailingComma": "all"
     },
     "bin": {
-        "prisma-json-schema-generator": "dist/cli.js"
+        "prisma-json-schema-generator-enhance": "dist/cli.js"
     }
 }
