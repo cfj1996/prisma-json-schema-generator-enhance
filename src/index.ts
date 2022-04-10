@@ -13,10 +13,6 @@ generatorHandler({
     },
     async onGenerate(options) {
         const jsonSchema = transformDMMF(options.dmmf, options.generator.config)
-        await fs.promises.writeFile(
-            path.join('./prisma/json-schema', 'options.json'),
-            JSON.stringify(options, null, 2),
-        )
         if (options.generator.output) {
             const outputDir =
                 // This ensures previous version of prisma are still supported
