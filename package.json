@@ -6,6 +6,10 @@
     "files": [
         "dist"
     ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cfj1996/prisma-json-schema-generator-enhance.git"
+  },
     "description": "JSON generator for prisma schema enhance",
     "dependencies": {
         "@prisma/generator-helper": "3.12.0",
