@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "User": {
+      "type": "object",
+      "$id": "User",
+      "required": [
+        "email",
+        "posts",
+        "keywords",
+        "biography"
+      ],
+      "description": "用户表",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "唯一id"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "email": {
+          "type": "string"
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "is18": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "successorId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "主要id"
+        },
+        "role": {
+          "type": "string",
+          "default": "USER",
+          "enum": [
+            "USER",
+            "ADMIN"
+          ]
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "biography": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ]
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "$id": "Post",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "user": {
+      "$ref": "#/definitions/User"
+    },
+    "post": {
+      "$ref": "#/definitions/Post"
+    }
+  }
+}

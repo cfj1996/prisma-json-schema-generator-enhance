@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator docs {
+  provider                 = "node ./dist/index.js"
+  keepRelationScalarFields = "true"
+  keepRelationTotalFields  = "false"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+/// 用户表
+model User {
+  /// 唯一id
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  email       String   @unique
+  weight      Float?
+  is18        Boolean?
+  name        String?
+  /// 主要id
+  successorId Int?
+  successor   User?    @relation("BlogOwnerHistory", fields: [successorId], references: [id])
+  predecessor User?    @relation("BlogOwnerHistory")
+  role        Role     @default(USER)
+  posts       Post[]
+  keywords    String[]
+  biography   Json
+}
+
+model Post {
+  id     Int   @id @default(autoincrement())
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+enum Role {
+  USER
+  ADMIN
+}
